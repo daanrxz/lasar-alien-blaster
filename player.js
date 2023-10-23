@@ -63,7 +63,7 @@ class Bullet{
     }
     bulletMovement(){
         const allUfos = document.querySelectorAll(".ufo-style");
-        console.log(allUfos);
+
         //interval for the bullet movement to the top of the screen
         setInterval(()=>{
             this.bullet.style.top = this.bulletTop - 10 + "px";
@@ -72,9 +72,27 @@ class Bullet{
         }, 8)
         //timeout that deletes that bullets that left the screen
         const bulletTimeout = setTimeout(()=>{
-            
             this.bullet.remove()
+            clearInterval(bulletDetect)
         }, 540)
+
+        const bulletDetect = setInterval(()=>{
+            allUfos.forEach(ufo=>{
+                const bulletRect = this.bullet.getBoundingClientRect();
+                const ufoRect = ufo.getBoundingClientRect();
+                if(
+                    bulletRect.left < ufoRect.right &&
+                    bulletRect.right > ufoRect.left &&
+                    bulletRect.top < ufoRect.bottom &&
+                    bulletRect.bottom > ufoRect.top
+                )
+                {
+                    console.log("collision");
+    
+                }
+
+            })
+        }, 5)
 
     }
 
