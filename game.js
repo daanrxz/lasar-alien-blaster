@@ -14,11 +14,13 @@ class Game{
     start(){
         //this will be the logic to add more ufos depending on level 
         const createUfo = setInterval(()=>{
-            if(this.ufos.length>1){
+            if(this.ufos.length>0){
                 clearInterval(createUfo)
             }
-            this.ufos.push(new Ufo(this.screen))
-        }, 3000)
+            const ufo = new Ufo(this.screen)
+            this.ufos.push(ufo)
+
+        }, 7000)
 
         this.gameLoop();
     }

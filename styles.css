@@ -31,6 +31,11 @@ body{
 
 }
 
+.player-health-style{
+    position: absolute;
+    background-color: white;
+    left: -25px;
+}
 .shooting-div{
     width: 10px;
     height: 10px;
@@ -61,5 +66,44 @@ body{
     width: 200px;
     height: 50px;
     border-radius: 50px;
-    
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+
+
+/* UFO healthbar */
+
+.healthbar-style{
+    position: absolute;
+    font-size: 2rem;
+    background-color: white;
+    width: fit-content;
+    left: -50px;
+
+}
+
+/* UFO Laser */
+.ufo-laser-gun{
+    position: relative;
+    width: 50px;
+    height: 10px;
+    background-color: red;
+}
+.ufo-laser{
+
+    position: absolute;
+    top: 0;
+    left: 50%; 
+    width: 5px; 
+    height: 100vh; 
+    background-color: red;
+    pointer-events: none;
+    background: rgba(204, 102, 255, 0.6);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(204, 102, 255,1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(204, 102, 255,1);
+    box-shadow: 0px 0px 15px 0px rgba(204, 102, 255,1);
+    transition: opacity 0.3s; 
+
 }

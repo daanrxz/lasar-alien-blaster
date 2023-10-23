@@ -14,8 +14,17 @@ class Player{
         this.screen.appendChild(this.element)
         this.element.appendChild(this.shootDiv);
         this.bullets = [];
-
+        this.element.elementObj = this;
         this.shootDiv.classList.add("shooting-div");
+
+
+        //player healthbar
+        this.health = 100;
+        this.playerHealth = document.createElement("div");
+        this.playerHealth.classList.add("player-health-style")
+        this.playerHealth.innerText = this.health;
+        this.element.appendChild(this.playerHealth);
+        
     }
     move(){
         this.left += this.directionX;
@@ -24,7 +33,7 @@ class Player{
             this.left = this.screen.offsetWidth - this.width
         }
         else if(this.left <= 0){
-            this.left = 0;
+            this.left = 0
         }
         this.updatePosition();
 
@@ -39,10 +48,17 @@ class Player{
         bullet.bulletMovement();
 
     }  
-    collisionDetection(){
-        const screenUfos = document.querySelectorAll(".ufo-style")
-        console.log(screenUfos);
-    } 
+    updateHealth(){
+        this.playerHealth.innerText = this.health;
+        if(this.health<0){
+            this.gameOver();
+        }
+    }
+    gameOver(){
+        this.element.remove()
+        console.log("gameover");
+    }
+
 
 
 }
@@ -87,8 +103,12 @@ class Bullet{
                     bulletRect.bottom > ufoRect.top
                 )
                 {
-                    console.log("collision");
-    
+                    //this controls the damage
+                    ufo.elementObj.health -=5;
+                    //this updates the health
+                    ufo.elementObj.updateHealth();
+                    //this removes the bullet if it hits the ufo
+                    this.bullet.remove()
                 }
 
             })
