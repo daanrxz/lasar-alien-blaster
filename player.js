@@ -53,9 +53,6 @@ class Player{
             bulletTop = parseInt(getComputedStyle(bullet).top);
         }, 8)
 
-
-
-
         setTimeout(()=>{
             bullet.remove()
         }, 650)
