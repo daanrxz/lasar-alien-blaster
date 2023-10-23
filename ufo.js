@@ -16,6 +16,7 @@ class Ufo{
     }
     movement(){
         const leftPos = parseInt(getComputedStyle(this.element).left)
+
        if(this.startDirection === 0){
             this.left += 3;
             this.updatePosition();

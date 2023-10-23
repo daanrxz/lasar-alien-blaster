@@ -49,13 +49,11 @@ function startGame() {
             keysPressed[e.code] = false;
             e.preventDefault(); 
         }
-
         if (game) {
             if (e.code === "ArrowLeft" || e.code === "ArrowRight") {
                 game.player.directionX = 0; 
             }
         }
-
         if (e.code === "Space") {
             stopShooting();
         }

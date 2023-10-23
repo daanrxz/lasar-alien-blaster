@@ -13,7 +13,7 @@ class Player{
         this.element.id = "main-character";
         this.screen.appendChild(this.element)
         this.element.appendChild(this.shootDiv);
-
+        this.bullets = [];
 
         this.shootDiv.classList.add("shooting-div");
     }
@@ -35,39 +35,47 @@ class Player{
     }
 
     shoot(){
+        const bullet = new Bullet(this.shootDiv);
+        bullet.bulletMovement();
 
-        //bullet creation
-        const bullet = document.createElement("div");
-        bullet.classList.add("bullet");
-        const shootDivPos= this.shootDiv.getBoundingClientRect();
-        const shootDivStyleTop = shootDivPos.top
-        const shootDivStyleLeft = shootDivPos.left
-        bullet.style.top = shootDivStyleTop + 1 +"px";
-        bullet.style.left = shootDivStyleLeft + + 1.5 + "px";
-
-        const bulletStyle = getComputedStyle(bullet);
-        let bulletTop = parseInt(bulletStyle.top);
-        this.shootDiv.appendChild(bullet)
-        //interval for the bullet movement to the top of the screen
-        setInterval(()=>{
-            bullet.style.top = bulletTop - 10 + "px";
-            bulletTop = parseInt(getComputedStyle(bullet).top);
-        }, 8)
-        //timeout that deletes that bullets that left the screen
-        setTimeout(()=>{
-            bullet.remove()
-        }, 540)
-
-        //bullet collision
-
-    }
+    }  
+    collisionDetection(){
+        const screenUfos = document.querySelectorAll(".ufo-style")
+        console.log(screenUfos);
+    } 
 
 
 }
 
-
 class Bullet{
-    constructor(){
-        
+    constructor(shootDiv){
+        //bullet creation
+        this.bullet = document.createElement("div");
+        this.bullet.classList.add("bullet");
+        const shootDivPos= shootDiv.getBoundingClientRect();
+        const shootDivStyleTop = shootDivPos.top
+        const shootDivStyleLeft = shootDivPos.left
+        this.bullet.style.top = shootDivStyleTop + 1 +"px";
+        this.bullet.style.left = shootDivStyleLeft + + 1.5 + "px";
+        const bulletStyle = getComputedStyle(this.bullet);
+        this.bulletTop = parseInt(bulletStyle.top);
+        shootDiv.appendChild(this.bullet)
     }
+    bulletMovement(){
+        const allUfos = document.querySelectorAll(".ufo-style");
+        console.log(allUfos);
+        //interval for the bullet movement to the top of the screen
+        setInterval(()=>{
+            this.bullet.style.top = this.bulletTop - 10 + "px";
+            this.bulletTop = parseInt(getComputedStyle(this.bullet).top);
+    
+        }, 8)
+        //timeout that deletes that bullets that left the screen
+        const bulletTimeout = setTimeout(()=>{
+            
+            this.bullet.remove()
+        }, 540)
+
+    }
+
 }
