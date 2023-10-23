@@ -41,7 +41,7 @@ body{
 
 } 
 .bullet{
-    position: absolute;
+    position: fixed;
     width: 5px;
     height: 20px;
     border-radius: 20px;

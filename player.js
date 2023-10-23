@@ -38,18 +38,28 @@ class Player{
     shoot(){
         const bullet = document.createElement("div");
         bullet.classList.add("bullet");
+        const shootDivPos= this.shootDiv.getBoundingClientRect();
+        const shootDivStyleTop = shootDivPos.top
+        const shootDivStyleLeft = shootDivPos.left
+        bullet.style.top = shootDivStyleTop + 1 +"px";
+        bullet.style.left = shootDivStyleLeft + + 1.5 + "px";
+
+        const bulletStyle = getComputedStyle(bullet);
+        let bulletTop = parseInt(bulletStyle.top);
         this.shootDiv.appendChild(bullet)
-       let bulletTop = parseInt(getComputedStyle(bullet).top);
-        
+
         setInterval(()=>{
             bullet.style.top = bulletTop - 10 + "px";
             bulletTop = parseInt(getComputedStyle(bullet).top);
-        }, 10)
+        }, 8)
+
+
+
+
         setTimeout(()=>{
             bullet.remove()
         }, 650)
-        console.log(bulletTop);
 
-        
+    
     }
 }
