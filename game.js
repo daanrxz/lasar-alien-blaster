@@ -12,13 +12,17 @@ class Game{
 
     }
     start(){
+        //this will be the logic to add more ufos depending on level 
+        // setInterval(()=>{
+        //     this.ufos.push(new Ufo(this.screen))
+        // }, 3000)
 
         this.gameLoop();
     }
     gameLoop(){
+
         if(this.gameIsOver){ return }
         this.update();
-        
         window.requestAnimationFrame(()=>{
             this.gameLoop()
             }
@@ -26,6 +30,7 @@ class Game{
     }
     update(){
         this.player.move()
+
         for(let i=0;i<this.ufos.length;i++){
             const ufo = this.ufos[i];
             ufo.movement()

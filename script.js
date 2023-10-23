@@ -45,7 +45,6 @@ function startGame() {
         }
     }
     function keyupFunc(e) {
-
         if (e.code in keysPressed) {
             keysPressed[e.code] = false;
             e.preventDefault(); 

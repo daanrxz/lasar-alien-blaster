@@ -2,7 +2,7 @@ class Ufo{
     constructor(screen){
         this.screen = screen;
         this.left = Math.floor(Math.random() * (this.screen.offsetWidth - 200))
-        this.top = 10;
+        this.top =  Math.floor(Math.random() * 80)
         this.width = 100;
         this.height = 150;
         this.startDirection = Math.floor(Math.random() * 2);
@@ -16,7 +16,6 @@ class Ufo{
     }
     movement(){
         const leftPos = parseInt(getComputedStyle(this.element).left)
-        console.log(leftPos);
        if(this.startDirection === 0){
             this.left += 3;
             this.updatePosition();

@@ -35,6 +35,8 @@ class Player{
     }
 
     shoot(){
+
+        //bullet creation
         const bullet = document.createElement("div");
         bullet.classList.add("bullet");
         const shootDivPos= this.shootDiv.getBoundingClientRect();
@@ -46,16 +48,26 @@ class Player{
         const bulletStyle = getComputedStyle(bullet);
         let bulletTop = parseInt(bulletStyle.top);
         this.shootDiv.appendChild(bullet)
-
+        //interval for the bullet movement to the top of the screen
         setInterval(()=>{
             bullet.style.top = bulletTop - 10 + "px";
             bulletTop = parseInt(getComputedStyle(bullet).top);
         }, 8)
-
+        //timeout that deletes that bullets that left the screen
         setTimeout(()=>{
             bullet.remove()
-        }, 650)
+        }, 540)
 
-    
+        //bullet collision
+
+    }
+
+
+}
+
+
+class Bullet{
+    constructor(){
+        
     }
 }
