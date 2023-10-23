@@ -53,3 +53,13 @@ body{
     bottom: 0;
 
 }
+
+
+.ufo-style{
+    position: absolute;
+    background-color: rgba(15, 8, 8, 0.537);
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    
+}

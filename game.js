@@ -4,10 +4,11 @@ class Game{
         this.player = new Player(this.screen, 400, 70, 30)
         this.height = 700;
         this.width = 800;
-        this.obstacles = [];
         this.lives = 5;
         this.gameIsOver = false;
         this.loadingObstacle = false;
+        this.level = 1;
+        this.ufos = [new Ufo(this.screen)];
 
     }
     start(){
@@ -25,6 +26,10 @@ class Game{
     }
     update(){
         this.player.move()
+        for(let i=0;i<this.ufos.length;i++){
+            const ufo = this.ufos[i];
+            ufo.movement()
+        }
     }
 
 }

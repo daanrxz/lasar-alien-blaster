@@ -14,13 +14,12 @@ class Player{
         this.screen.appendChild(this.element)
         this.element.appendChild(this.shootDiv);
 
-        //place where the bullets come out of
+
         this.shootDiv.classList.add("shooting-div");
     }
     move(){
-        //update the tank's position depending on the direction
         this.left += this.directionX;
-        //right and left
+
         if(this.left + this.width >= this.screen.offsetWidth){
             this.left = this.screen.offsetWidth - this.width
         }
