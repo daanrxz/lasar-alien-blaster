@@ -32,6 +32,7 @@ class Player{
     }
     updatePosition(){
         this.element.style.left = this.left + "px";
+
     }
 
     shoot(){
@@ -44,7 +45,10 @@ class Player{
             bullet.style.top = bulletTop - 10 + "px";
             bulletTop = parseInt(getComputedStyle(bullet).top);
         }, 10)
-
+        setTimeout(()=>{
+            bullet.remove()
+        }, 650)
+        console.log(bulletTop);
 
         
     }
