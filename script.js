@@ -16,7 +16,7 @@ function startGame(){
     game.start()
 
     function keydownFunc(e){
-        console.log(keysPressed);
+
 
         const key = e.code;
         const keys = [ "ArrowLeft", "ArrowRight"];
@@ -35,7 +35,14 @@ function startGame(){
                     break;
             }
             if(keysPressed["ArrowLeft"] === true && keysPressed["Space"] === true){
-               console.log("test");
+                game.player.shoot()
+            }
+            if(keysPressed["ArrowRight"] === true && keysPressed["Space"] === true){
+                game.player.shoot()
+            }
+            if(keysPressed["Space"] === true){
+                game.player.shoot()
+
             }
 
         }
