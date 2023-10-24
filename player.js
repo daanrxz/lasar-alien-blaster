@@ -50,7 +50,7 @@ class Player{
     }  
     updateHealth(){
         this.playerHealth.innerText = this.health;
-        if(this.health<0){
+        if(this.health<1){
             this.gameOver();
         }
     }

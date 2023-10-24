@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(205, 209, 223);
+}
+
+/* ------------------------------------------------ Start game */
+#start-menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+#logo-container{
+    background-color: rgba(255, 255, 255, 0.344);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 30px;
+    margin-top: 90px;
+
+}
+
+.alien-title{
+    width: 250px;
+    height: 74px;
+
+}
+
+.blaster-title{
+    width: 350px;
+    height:74px;
+
+}
+
+.logo-title{
+    width: 100px;
+    right: 30px;
+    top: 25px;
+    position: absolute;
+    opacity: 0.8;
+}
+
+
+#buttons-container{
+    font-family: 'Montserrat', sans-serif;
+   
+
+}
+#start-button{
+    background-color: rgba(255, 255, 255, 0.913);
+    text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: all 0.15s linear;
+    color: black;
+    border: 5px solid rgb(91, 107, 128);
+    user-select: none;
+}
+#start-button:hover{
+    background-color:rgb(91, 107, 128) ;
+    color: white;
+}
+#start-button:active{
+    transform: scale(0.95);
+}
+/* Game container */
+#main-container{
+    border-radius: 10px;
+    background-image: url(/images/background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 800px;
+    height:700px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
