@@ -1,5 +1,5 @@
 const mainContainer = document.getElementById("main-container");
-let currentLevel = 0;
+let currentLevel = 1;
 window.onload = ()=>{
     mainMenu()
 }
@@ -31,7 +31,7 @@ function gameIsOver(){
 
 function startGame(level) {
     mainContainer.innerHTML="";
-    const game = new Game(currentLevel);
+    const game = new Game(level);
     game.start();
     // Object to track the current state of keys
     const keysPressed = {

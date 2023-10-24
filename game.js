@@ -22,7 +22,7 @@ class Game{
         this.ufoInterval()
     }
     ufoCreation(){
-        this.ufos.push(new Ufo(this.screen, this));
+        this.ufos.push(new Ufo(this.screen, this, "images/ufo-img.png" ));
     }
     ufoInterval(){
         //this will be the logic to add more ufos depending on level 

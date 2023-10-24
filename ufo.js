@@ -1,5 +1,5 @@
 class Ufo{
-    constructor(screen, game, index){
+    constructor(screen, game, imgSrc){
         this.game = game
         this.screen = screen;
         this.left = Math.floor(Math.random() * (this.screen.offsetWidth - 200))
@@ -10,18 +10,17 @@ class Ufo{
         this.shooting = false;
         this.laser = null;
         //element creation
-        const ufoElement = this.createUfo()
-        this.element = ufoElement[0]
-        this.element.classList.add("ufo-style");
+        this.element = createToDom("div", ["class", "ufo-style"])
+        const ufoImg = createToDom("img", ["id", "ufo-img"],this.element, imgSrc)
+
 
         this.element.style.left = this.left+ "px";
         this.element.style.top = this.top +"px";
         this.element.elementObj = this;
         this.screen.appendChild(this.element);
 
-        this.ufoLaserGun = ufoElement[1]
-        this.ufoLaserGun.classList.add("ufo-laser-gun")
-  
+        this.ufoLaserGun = createToDom("div", ["class", "ufo-laser-gun"], this.element)
+
         
         this.index = null;
         //health bar
@@ -34,22 +33,7 @@ class Ufo{
         this.ufoShoot()
 
     }
-    createUfo(){
-        const mainContainer = createToDom("div", ["class", "main-ufo-container"], false);
-        const container = createToDom("div", ["class", "container-ufo"], mainContainer);
-        const box = createToDom("div", ["class", "box"], container);
-        const topCover = createToDom("div", ["class", "top-cover"], box);
-        const belt = createToDom("div", ["class", "belt"], topCover);
-        for(let i=0;i<6;i++){
-            const span = createToDom("span", false, belt);
-            span.setAttribute("style", `--i: ${i};`)
-        }
-        const glass = createToDom("div", ["class", "glass"], topCover)
-        const bottomLight = createToDom("div", ["class", "bottom-light"], box);
-        const light = createToDom("div", ["class", "light"], bottomLight);
-
-        return [mainContainer, bottomLight]
-    }
+   
     movement(){
         const leftPos = parseInt(getComputedStyle(this.element).left)
 

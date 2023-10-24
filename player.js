@@ -21,10 +21,17 @@ class Player{
         //player healthbar
         this.health = 100;
         this.playerHealth = document.createElement("div");
-        this.playerHealth.classList.add("player-health-style")
-        this.playerHealth.innerText = this.health;
-        this.element.appendChild(this.playerHealth);
-        
+      
+        const healthbar = this.createHealthBar();
+        this.element.appendChild(healthbar[0])
+        this.healthElement = healthbar[1]
+
+
+    }
+    createHealthBar(){
+        const main = createToDom("div", ["class", "player-health-bar"], false);
+        const inner = createToDom("div", false, main);
+        return [main, inner]
     }
     createTank(){
         const main = createToDom("div", ["class", "main-part"], false);
@@ -70,6 +77,10 @@ class Player{
     }  
     updateHealth(){
         this.playerHealth.innerText = this.health;
+        this.healthElement.style.width = this.health + "%";
+        const reversePercentage = (100-Math.abs(this.health))/100
+        const newHSL = (1 - reversePercentage)*120;
+        this.healthElement.style.backgroundColor = `hsl(${newHSL}, 100%, 50%)`
         if(this.health<1){
             this.gameOver();
         }

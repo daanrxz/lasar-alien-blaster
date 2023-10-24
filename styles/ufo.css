@@ -3,10 +3,14 @@
 .ufo-style{
     position: absolute;
 
-
+    width: fit-content;
+    height: fit-content;
 
 }
-
+#ufo-img{
+    width: 250px;
+    
+}
 
 
 /* UFO healthbar */
@@ -22,14 +26,15 @@
 
 /* UFO Laser */
 .ufo-laser-gun{
-    position: relative;
+    position: absolute;
+    background-color: white;
+    left: 50%;
 
 }
 .ufo-laser{
-
     position: absolute;
-    top: 0;
-    left: 50%; 
+    top: -10px;
+    left: 40%; 
     width: 5px; 
     height: 100vh; 
     background-color: red;
@@ -42,142 +47,3 @@
 
 }
 
-/* ufo css */
-.main-ufo-container {
-    display: grid;
-    place-items: center;
-    width: 100px;
-    height: 150px;
-
-}
-.box {
-    position: relative;;
-
-    background: linear-gradient(#B1AFAF, #666666);
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .6);
-    border-top: 1px solid #fff;
-    animation: move 5s linear infinite;
-}
-
-.box::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background: #666666;
-    top: 50%;
-    transform: translateY(-50%);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .6),
-                0 -1px 3px rgba(255, 255, 255, .2)
-}
-.box .top-cover {
-    position: relative;
-    width: 150px;
-    left: 50%;
-    top: -8px;
-    transform: translateX(-50%);
-}
-.box .top-cover .belt {
-    position: absolute;
-    width: 150px;
-    height: 15px;
-    background: linear-gradient(90deg, #B1AFAF, #B9B8B8, #CACACA, #CACACA, #B9B8B8, #B1AFAF);
-}
-.box .top-cover .glass {
-    position: absolute;
-    width: 100%;
-    height: 70px;
-    background-color: rgba(255, 255, 255, .2);
-    top: -60px;
-    z-index: -1;
-    border-radius: 100px 100px 0 0;
-    border-top: .1px solid #fff;
-}
-.box .glass::before {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    top: 10px;
-    left: 70px;
-    filter:blur(20px);
-}
-.box .bottom-light {
-position: relative;
-width: 140px;
-height:20px;
-background: linear-gradient(90deg, #666666, #757575,#949494,#757575,#666666);
-bottom: -95px;
-left: 50%;
-transform: translateX(-50%);
-border-radius: 0 0 10px 10px;
-}
-.box .bottom-light .light{
-    position: absolute;
-    width: 220px;
-    height:0;
-    border-bottom: 240px solid #f0f0ee54;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    bottom: -240px;
-    left: -38px;
-}
-.box .bottom-light .light::before{
-    content: "";
-    position: absolute;
-    width: 220px;
-    height: 50px;
-    background: #fcfcae6f;
-    left: -60px;
-    bottom: -265px;
-    border-radius:50%;
-}
-.box .top-cover .belt .dots {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.box .top-cover .belt .dots span{
-    width: 10px;
-    height:10px;
-    background: #949494;
-    margin: 0 5px;
-    border-radius: 50%;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, .3),
-        -1px -1px 2px rgba(255, 255, 255, .3);
-        animation: anim 5s linear infinite;
-        animation-delay: calc(var(--i) * .5s);
-}
-.box .top-cover .light .dots {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-@keyframes anim{
-    0%{
-        background: yellow;
-        box-shadow: 0 0 5px yellow;
-    }
-    25%{
-        background: red;
-        box-shadow: 0 0 5px red;
-    }
-    50%{
-        background: lightgreen;
-        box-shadow: 0 0 5px lightgreen;
-    }
-    75%{
-        background: teal;
-        box-shadow: 0 0 5px teal;
-    }
-    100%{
-        background: chartreuse;
-        box-shadow: 0 0 5px chartreuse;
-    }
-}
