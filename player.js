@@ -56,7 +56,7 @@ class Player{
     }
     gameOver(){
         this.element.remove()
-        console.log("gameover");
+        gameIsOver();
     }
 
 

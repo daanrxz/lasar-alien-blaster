@@ -1,12 +1,27 @@
-const startBtn = document.getElementById("start-button")
-startBtn.addEventListener("click", startGame)
+const mainContainer = document.getElementById("main-container");
+window.onload = ()=>{
+    mainMenu()
+}
 
 function mainMenu(){
+    mainContainer.innerHTML = "";
+    const startMenu = createToDom("div", ["id", "start-menu"], mainContainer);
+    const logoContainer = createToDom("div", ["id", "logo-container"], startMenu);
+    const alienTitle = createToDom("img", ["class", "alien-title"], logoContainer, "/images/alien-title.png")
+    const blasterTitle = createToDom("img", ["class", "blaster-title"], logoContainer, "/images/blaster-title.png")
+    const logoTitle = createToDom("img", ["class", "logo-title"], logoContainer, "/images/logo-title.png")
+    const btnsContainer = createToDom("div", ["id", "buttons-container"], startMenu)
+    const startBtn = createToDom("div", ["id", "start-button"], startMenu, false, "Start Game")
+    startBtn.addEventListener("click", startGame)
+}
+function gameIsOver(){
+    mainContainer.innerHTML = "";
+    const gameOverDiv= createToDom("div", ["id", "game-over-div"], mainContainer);
     
 }
 
-
 function startGame() {
+    mainContainer.innerHTML="";
     const game = new Game();
     game.start();
     // Object to track the current state of keys
