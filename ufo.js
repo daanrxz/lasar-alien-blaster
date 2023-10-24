@@ -1,5 +1,6 @@
 class Ufo{
-    constructor(screen){
+    constructor(screen, game, index){
+        this.game = game
         this.screen = screen;
         this.left = Math.floor(Math.random() * (this.screen.offsetWidth - 200))
         this.top =  Math.floor(Math.random() * 80)
@@ -21,7 +22,7 @@ class Ufo{
         this.ufoLaserGun.classList.add("ufo-laser-gun")
         this.element.appendChild(this.ufoLaserGun);
         
-
+        this.index = null;
         //health bar
         this.health = 100;
         this.healthBar = document.createElement("div");
@@ -63,8 +64,8 @@ class Ufo{
     updateHealth(){
         this.healthBar.innerText = this.health;
         if(this.health<1){
-            
             this.element.remove()
+           this.game.removeUfo(this.element);
         }
     }
     ufoShoot(){

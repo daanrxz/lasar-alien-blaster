@@ -1,13 +1,16 @@
 function createToDom(elementType, className, parent, src, text){
     const element = document.createElement(elementType);
-    if(className[0]==="id"){
-        element.id = className[1]
-    }
-    else{
-        for(let i=1; i<className.length; i++){
-            element.classList.add(className[i])
+    if(className){
+        if(className[0]==="id"){
+            element.id = className[1]
+        }
+        else{
+            for(let i=1; i<className.length; i++){
+                element.classList.add(className[i])
+            }
         }
     }
+
     if(elementType==="img"){
         element.src = src;
     }

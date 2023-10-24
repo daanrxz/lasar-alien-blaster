@@ -1,4 +1,5 @@
 const mainContainer = document.getElementById("main-container");
+let currentLevel = 1;
 window.onload = ()=>{
     mainMenu()
 }
@@ -11,28 +12,26 @@ function mainMenu(){
     const blasterTitle = createToDom("img", ["class", "blaster-title"], logoContainer, "/images/blaster-title.png")
     const logoTitle = createToDom("img", ["class", "logo-title"], logoContainer, "/images/logo-title.png")
     const btnsContainer = createToDom("div", ["id", "buttons-container"], startMenu)
-    const startBtn = createToDom("div", ["id", "start-button"], startMenu, false, "Start Game")
-    startBtn.addEventListener("click", startGame)
+    const startBtn = createToDom("div", ["class", "menu-btn"], startMenu, false, "Start Game")
+    startBtn.addEventListener("click", ()=>{
+        startGame(currentLevel)
+    })
 }
 function gameIsOver(){
     mainContainer.innerHTML = "";
     const gameOverDiv= createToDom("div", ["id", "game-over-div"], mainContainer);
     const title = createToDom("div", ["id", "game-over-title"], gameOverDiv, false, "Game Over");
-    const retryBtn = createToDom("div", ["id", "retry-btn"], gameOverDiv, false, "Retry")
-    const menuBtn = createToDom("div", ["id", "back-to-menu-btn"], gameOverDiv, false, "Back To Main")
-    retryBtn.addEventListener("click", startGame)
+    const retryBtn = createToDom("div", ["class", "menu-btn"], gameOverDiv, false, "Retry")
+    const menuBtn = createToDom("div", ["class", "menu-btn"], gameOverDiv, false, "Back To Main")
+    retryBtn.addEventListener("click", ()=>{
+        startGame(currentLevel)
+    })
     menuBtn.addEventListener("click", mainMenu)
 }
-function youWin() {
-    mainContainer.innerHTML = "";
-    const youWinDiv = createToDom("div", ["id", "you-win-div"], mainContainer);
-    const title = createToDom("div", ["id", "you-win-title"], youWinDiv, false, "YOU WIN!");
-    const menuBtn = createToDom("div", ["id", "back-to-menu-win"], youWinDiv, false, "Back To Main")
-    menuBtn.addEventListener("click", mainMenu)
-}
-function startGame() {
+
+function startGame(level) {
     mainContainer.innerHTML="";
-    const game = new Game();
+    const game = new Game(currentLevel);
     game.start();
     // Object to track the current state of keys
     const keysPressed = {
