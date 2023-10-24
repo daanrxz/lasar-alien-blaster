@@ -1,5 +1,5 @@
 const mainContainer = document.getElementById("main-container");
-let currentLevel = 1;
+let currentLevel = 0;
 window.onload = ()=>{
     mainMenu()
 }

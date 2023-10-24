@@ -1,7 +1,7 @@
 class Game{
     constructor(level){
         this.screen = document.getElementById("main-container");
-        this.player = new Player(this.screen, 400, 70, 30)
+        this.player = new Player(this.screen, 400, 140, 140)
         this.height = 700;
         this.width = 800;
         this.lives = 5;

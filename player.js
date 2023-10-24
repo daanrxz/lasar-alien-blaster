@@ -7,12 +7,12 @@ class Player{
         this.height = height;
         this.directionX = 0;
         //player element
-        this.element = document.createElement("div");
-        this.shootDiv = document.createElement("div");
+        const tank = this.createTank();
+        this.element = tank[0];
+        this.shootDiv = tank[1];
         
         this.element.id = "main-character";
         this.screen.appendChild(this.element)
-        this.element.appendChild(this.shootDiv);
         this.bullets = [];
         this.element.elementObj = this;
         this.shootDiv.classList.add("shooting-div");
@@ -25,6 +25,26 @@ class Player{
         this.playerHealth.innerText = this.health;
         this.element.appendChild(this.playerHealth);
         
+    }
+    createTank(){
+        const main = createToDom("div", ["class", "main-part"], false);
+
+        const gunDiv = createToDom("div", ["class", "gun-div"], main);
+        const blasterGun= createToDom("div", ["class", "blaster-gun"], gunDiv);
+        const upperGun = createToDom("div", ["class", "upper-gun"], gunDiv);
+        const gunBase = createToDom("div", ["class", "gun-base"], gunDiv);
+
+        const upperDiv = createToDom("div", ["class", "upper-div"], main);
+        const innerUpperDiv = createToDom("div", ["class", "inner-upper-div"], upperDiv);
+
+        const lowerDiv = createToDom("div", ["class", "lower-div"], main);
+        for(let i=0;i<4;i++){
+            const wheel = createToDom("div", ["class", "wheel"], lowerDiv);
+            const line1 = createToDom("div", ["class", "line-1"], wheel);
+            const line2 = createToDom("div", ["class", "line-2"], wheel);
+            const innerWheel = createToDom("div", ["class", "inner-wheel"], wheel)
+        }
+        return [main, gunDiv];
     }
     move(){
         this.left += this.directionX;
@@ -71,8 +91,8 @@ class Bullet{
         const shootDivPos= shootDiv.getBoundingClientRect();
         const shootDivStyleTop = shootDivPos.top
         const shootDivStyleLeft = shootDivPos.left
-        this.bullet.style.top = shootDivStyleTop + 1 +"px";
-        this.bullet.style.left = shootDivStyleLeft + + 1.5 + "px";
+        this.bullet.style.top = shootDivStyleTop - 15 +"px";
+        this.bullet.style.left = shootDivStyleLeft + 18.5 + "px";
         const bulletStyle = getComputedStyle(this.bullet);
         this.bulletTop = parseInt(bulletStyle.top);
         shootDiv.appendChild(this.bullet)
