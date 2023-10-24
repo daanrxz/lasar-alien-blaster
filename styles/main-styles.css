@@ -10,7 +10,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(205, 209, 223);
+    background-color: rgb(255, 255, 255);
 }
 /* Game container */
 #main-container{
