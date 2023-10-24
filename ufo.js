@@ -3,7 +3,7 @@ class Ufo{
         this.game = game
         this.screen = screen;
         this.left = Math.floor(Math.random() * (this.screen.offsetWidth - 200))
-        this.top =  Math.floor(Math.random() * 80)
+        this.top =  Math.floor(Math.random() * (100 - 10) + 10)
         this.width = 100;
         this.height = 150;
         this.startDirection = Math.floor(Math.random() * 2);
@@ -21,19 +21,19 @@ class Ufo{
 
         this.ufoLaserGun = createToDom("div", ["class", "ufo-laser-gun"], this.element)
 
-        
-        this.index = null;
         //health bar
         this.health = 100;
-        this.healthBar = document.createElement("div");
-        this.healthBar.classList.add("healthbar-style")
-        this.element.appendChild(this.healthBar);
-        this.healthBar.innerText = this.health;
-
+        const healthbar = this.createHealthBar();
+        this.healthElement = healthbar[1];
+        this.element.appendChild(healthbar[0])
         this.ufoShoot()
 
     }
-   
+    createHealthBar(){
+        const main = createToDom("div", ["class", "ufo-health-bar"], false);
+        const inner = createToDom("div", false, main);
+        return [main, inner]
+    }
     movement(){
         const leftPos = parseInt(getComputedStyle(this.element).left)
 
@@ -62,7 +62,10 @@ class Ufo{
         }
     }
     updateHealth(){
-        this.healthBar.innerText = this.health;
+        this.healthElement.style.width = this.health + "%";
+        const reversePercentage = (100-Math.abs(this.health))/100
+        const newHSL = (1 - reversePercentage)*120;
+        this.healthElement.style.backgroundColor = `hsl(${newHSL}, 100%, 50%)`
         if(this.health<1){
             this.element.remove()
            this.game.removeUfo(this.element);

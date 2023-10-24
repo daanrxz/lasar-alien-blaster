@@ -15,26 +15,34 @@
 
 /* UFO healthbar */
 
-.healthbar-style{
+.ufo-health-bar{
     position: absolute;
-    font-size: 2rem;
+    top: -15px;
+    left: 30%;
+    border-radius: 10px;
+    width: 100px;
+    height: 10px;
     background-color: white;
-    width: fit-content;
-    left: -50px;
+    overflow: hidden;
+}
 
+.ufo-health-bar div{
+    background-color: hsl(120, 100%, 50%);
+    width: 100%;
+    height: 100%;
 }
 
 /* UFO Laser */
 .ufo-laser-gun{
     position: absolute;
     background-color: white;
-    left: 50%;
+    left: 48.5%;
 
 }
 .ufo-laser{
     position: absolute;
     top: -10px;
-    left: 40%; 
+
     width: 5px; 
     height: 100vh; 
     background-color: red;
