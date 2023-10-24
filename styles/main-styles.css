@@ -12,7 +12,18 @@ body{
     height: 100vh;
     background-color: rgb(205, 209, 223);
 }
-
+/* Game container */
+#main-container{
+    border-radius: 10px;
+    background-image: url(/images/background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 800px;
+    height:700px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 /* ------------------------------------------------ Start game */
 #start-menu{
   display: flex;
@@ -20,6 +31,8 @@ body{
   justify-content: center;
   align-items: center;
   gap: 60px;
+  font-family: 'Montserrat', sans-serif;
+
 }
 #logo-container{
     background-color: rgba(255, 255, 255, 0.344);
@@ -54,11 +67,43 @@ body{
 
 
 #buttons-container{
-    font-family: 'Montserrat', sans-serif;
    
 
 }
-#start-button{
+
+
+
+/* Game Over Div */
+
+#game-over-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid black;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+    gap: 10px;
+
+
+}
+#game-over-title{
+    font-size: 6rem;
+    background-color: rgba(195, 118, 90, 0.4);
+    border: 3px solid rgba(0, 0, 0, 0.307);
+    border-radius: 5px;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(218, 204, 204);
+}
+#retry-btn, #back-to-menu-btn{
+    background-color: white;
+    font-size: 2.5rem;
+    
+}
+
+#retry-btn, #back-to-menu-btn, #start-button{
     background-color: rgba(255, 255, 255, 0.913);
     text-transform: uppercase;
     padding: 10px;
@@ -69,22 +114,10 @@ body{
     border: 5px solid rgb(91, 107, 128);
     user-select: none;
 }
-#start-button:hover{
+#retry-btn:hover, #back-to-menu-btn:hover, #start-button:hover{
     background-color:rgb(91, 107, 128) ;
     color: white;
 }
-#start-button:active{
+#retry-btn:active, #back-to-menu-btn:active, #start-button:active{
     transform: scale(0.95);
-}
-/* Game container */
-#main-container{
-    border-radius: 10px;
-    background-image: url(/images/background.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-width: 800px;
-    height:700px;
-    position: relative;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

@@ -17,9 +17,19 @@ function mainMenu(){
 function gameIsOver(){
     mainContainer.innerHTML = "";
     const gameOverDiv= createToDom("div", ["id", "game-over-div"], mainContainer);
-    
+    const title = createToDom("div", ["id", "game-over-title"], gameOverDiv, false, "Game Over");
+    const retryBtn = createToDom("div", ["id", "retry-btn"], gameOverDiv, false, "Retry")
+    const menuBtn = createToDom("div", ["id", "back-to-menu-btn"], gameOverDiv, false, "Back To Main")
+    retryBtn.addEventListener("click", startGame)
+    menuBtn.addEventListener("click", mainMenu)
 }
-
+function youWin() {
+    mainContainer.innerHTML = "";
+    const youWinDiv = createToDom("div", ["id", "you-win-div"], mainContainer);
+    const title = createToDom("div", ["id", "you-win-title"], youWinDiv, false, "YOU WIN!");
+    const menuBtn = createToDom("div", ["id", "back-to-menu-win"], youWinDiv, false, "Back To Main")
+    menuBtn.addEventListener("click", mainMenu)
+}
 function startGame() {
     mainContainer.innerHTML="";
     const game = new Game();
