@@ -75,6 +75,7 @@ class Game{
         }
     }
     start(){
+        stateGame = true;
         this.gameLoop();
         this.ufoInterval()
         this.powerupTimeout();
@@ -107,6 +108,8 @@ class Game{
     }
     youWin(){
         this.gameIsOver = true;
+        laserSound.pause()
+        stateGame = false;
         this.screen.innerHTML = "";
         const youWinDiv = createToDom("div", ["id", "you-win-div"], this.screen);
         const title = createToDom("div", ["id", "you-win-title"], youWinDiv, false, "YOU WIN!");

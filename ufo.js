@@ -81,6 +81,9 @@ class Ufo{
         }, randomInterval)
     }
     shootLaser(){
+        if(stateGame){
+            laserSound.play()
+        }
         const laser = document.createElement("div");
         this.laser = laser;
         this.ufoLaserGun.appendChild(laser);

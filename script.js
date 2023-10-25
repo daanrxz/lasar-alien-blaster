@@ -1,6 +1,8 @@
 const mainContainer = document.getElementById("main-container");
-
+const gunSound = new Audio("sounds/gun-sound.mp3")
+const laserSound = new Audio("sounds/laser-sound.mp3")
 //Game state
+let stateGame = false;
 let currentLevel = 1;
 let playerSpeed = 3;
 let soundEffects = true;
@@ -84,6 +86,10 @@ function startGame(level) {
         }
         if (keysPressed["Space"]) {
             startShooting();
+            if(stateGame){
+                gunSound.play()
+
+            }
         }
     }
     function keyupFunc(e) {
@@ -109,6 +115,8 @@ function startGame(level) {
         }
         if (e.code === "Space") {
             stopShooting();
+            
+            gunSound.pause()
         }
     }
     window.addEventListener("keydown", keydownFunc);

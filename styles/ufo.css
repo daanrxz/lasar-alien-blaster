@@ -7,6 +7,22 @@
     height: fit-content;
 
 }
+
+.ufo-taking-damage{
+    animation: ufoAnim 0.3s linear infinite;
+}
+
+@keyframes ufoAnim {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 #ufo-img{
     width: 250px;
     

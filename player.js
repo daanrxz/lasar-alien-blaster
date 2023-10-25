@@ -90,6 +90,8 @@ class Player{
         this.element.remove()
         gameIsOver();
         this.game.gameIsOver = true;
+        stateGame = false;
+        laserSound.pause()
     }
 
 
@@ -136,7 +138,11 @@ class Bullet{
                     bulletRect.top < ufoRect.bottom &&
                     bulletRect.bottom > ufoRect.top
                 )
-                {
+                {   
+                    ufo.classList.add("ufo-taking-damage")
+                    setTimeout(()=>{
+                        ufo.classList.remove("ufo-taking-damage")
+                    }, 500)
                     //this controls the damage
                     ufo.elementObj.health -=5;
                     //this updates the health
