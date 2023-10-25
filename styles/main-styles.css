@@ -213,10 +213,12 @@ body{
 .powerup{
     position: absolute;
     bottom: 40px;
-    width: 50px;
+    width: 40px;
     animation: powerupAnim 1s linear infinite;
 
 }
+
+
 
 @keyframes powerupAnim {
     0%{

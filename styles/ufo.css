@@ -24,7 +24,7 @@
     }
 }
 #ufo-img{
-    width: 250px;
+    width: 200px;
     
 }
 
@@ -34,7 +34,7 @@
 .ufo-health-bar{
     position: absolute;
     top: -15px;
-    left: 30%;
+    left: 25%;
     border-radius: 10px;
     width: 100px;
     height: 10px;

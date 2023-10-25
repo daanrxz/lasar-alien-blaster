@@ -84,6 +84,13 @@ class Ufo{
         if(stateGame){
             laserSound.play()
         }
+        else{
+            laserSound.pause()
+        }
+        if(!soundEffects){
+            laserSound.pause()
+
+        }
         const laser = document.createElement("div");
         this.laser = laser;
         this.ufoLaserGun.appendChild(laser);

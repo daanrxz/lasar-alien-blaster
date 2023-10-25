@@ -36,6 +36,7 @@ function soundOptions(){
         else{
             soundEffects=false;
             crossSound.style.display = "block"
+            laserSound.pause()
         }
     }
     function musicToggle(){
