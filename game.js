@@ -50,7 +50,6 @@ class Game{
         }
     }
     powerActivate(powerType){
-        
         switch(powerType){
             case "speed":
                 const player= document.getElementById("main-character");
@@ -60,7 +59,7 @@ class Game{
                 })
                 playerSpeed = 7;
                 setTimeout(()=>{
-                    playerSpeed = 3;
+                    playerSpeed = 4;
                     wheels.forEach(wheel=>{
                         wheel.classList.remove("speed-wheel")
                     })

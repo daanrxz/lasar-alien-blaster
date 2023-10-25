@@ -1,20 +1,66 @@
 const mainContainer = document.getElementById("main-container");
 const gunSound = new Audio("sounds/gun-sound.mp3")
 const laserSound = new Audio("sounds/laser-sound.mp3")
+const song = new Audio("sounds/venice.mp3")
 //Game state
 let stateGame = false;
 let currentLevel = 1;
-let playerSpeed = 3;
+let playerSpeed = 4;
 let soundEffects = true;
-let music = true;
+let music = false;
 
 
 window.onload = ()=>{
     mainMenu()
+    soundOptions()
+
 }
+function soundOptions(){
+    const container = createToDom("div", ["id", "sound-container"], mainContainer)
+    const soundContainer = createToDom("div", ["class", "icon-container"], container)
+    const soundIcon = createToDom("img", ["class", "icon", "sound-icon"], soundContainer, "images/sound-icon.png" )
+    const crossSound = createToDom("div", ["class", "disabled-sound"], soundContainer, false, "X")
+    crossSound.style.display= soundEffects ? "none" : "block"
+    const musicContainer = createToDom("div", ["class", "icon-container"], container)
+    const musicIcon = createToDom("img", ["class", "icon", "music-icon"], musicContainer,"images/music-icon.png" )
+    const crossMusic = createToDom("div", ["class", "disabled-sound"], musicContainer, false, "X")
+    crossMusic.style.display= music ? "none" : "block"
+    
+    soundContainer.addEventListener("click", soundToggle);
+    musicContainer.addEventListener("click", musicToggle);
+    function soundToggle(){
+        if(!soundEffects){
+            soundEffects=true;
+            crossSound.style.display = "none"
+        }
+        else{
+            soundEffects=false;
+            crossSound.style.display = "block"
+        }
+    }
+    function musicToggle(){
+        if(music){
+            music=false;
+            crossMusic.style.display = "block"
+            song.pause()
+
+            console.log("test");
+        }
+        else{
+            song.pause()
+            music=true;
+            crossMusic.style.display = "none"
+            song.play()
+
+        }
+    }
+
+}
+
 
 function mainMenu(){
     mainContainer.innerHTML = "";
+    soundOptions()
     const startMenu = createToDom("div", ["id", "start-menu"], mainContainer);
     const logoContainer = createToDom("div", ["id", "logo-container"], startMenu);
     const alienTitle = createToDom("img", ["class", "alien-title"], logoContainer, "/images/alien-title.png")
@@ -40,6 +86,7 @@ function gameIsOver(){
 
 function startGame(level) {
     mainContainer.innerHTML="";
+    soundOptions()
     const game = new Game(level);
     game.start();
     // Object to track the current state of keys
@@ -86,7 +133,7 @@ function startGame(level) {
         }
         if (keysPressed["Space"]) {
             startShooting();
-            if(stateGame){
+            if(stateGame && soundEffects){
                 gunSound.play()
 
             }
