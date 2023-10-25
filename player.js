@@ -71,7 +71,7 @@ class Player{
     }
 
     shoot(){
-        const bullet = new Bullet(this.shootDiv);
+        const bullet = new Bullet(this.shootDiv, this.screen);
         bullet.bulletMovement();
 
     }  
@@ -95,7 +95,7 @@ class Player{
 }
 
 class Bullet{
-    constructor(shootDiv){
+    constructor(shootDiv, screen){
         //bullet creation
         this.bullet = document.createElement("div");
         this.bullet.classList.add("bullet");
@@ -107,25 +107,26 @@ class Bullet{
         const bulletStyle = getComputedStyle(this.bullet);
         this.bulletTop = parseInt(bulletStyle.top);
         shootDiv.appendChild(this.bullet)
+        this.screen = screen;
     }
     bulletMovement(){
         const allUfos = document.querySelectorAll(".ufo-style");
-
         //interval for the bullet movement to the top of the screen
-        setInterval(()=>{
+        const bulletMove = setInterval(()=>{
             this.bullet.style.top = this.bulletTop - 10 + "px";
             this.bulletTop = parseInt(getComputedStyle(this.bullet).top);
     
         }, 8)
-        //timeout that deletes that bullets that left the screen
-        const bulletTimeout = setTimeout(()=>{
-            this.bullet.remove()
-            clearInterval(bulletDetect)
-        }, 540)
-
+        
         const bulletDetect = setInterval(()=>{
+            const bulletRect = this.bullet.getBoundingClientRect();
+            const screenRect = this.screen.getBoundingClientRect();
+            if(bulletRect.top < screenRect.top ){
+                this.bullet.remove()
+                clearInterval(bulletDetect)
+                clearInterval(bulletMove)
+            }
             allUfos.forEach(ufo=>{
-                const bulletRect = this.bullet.getBoundingClientRect();
                 const ufoRect = ufo.getBoundingClientRect();
                 if(
                     bulletRect.left < ufoRect.right &&
@@ -140,8 +141,9 @@ class Bullet{
                     ufo.elementObj.updateHealth();
                     //this removes the bullet if it hits the ufo
                     this.bullet.remove()
+                    clearInterval(bulletDetect)
+                    clearInterval(bulletMove)
                 }
-
             })
         }, 5)
 

@@ -72,7 +72,7 @@ class Ufo{
         }
     }
     ufoShoot(){
-        const randomInterval = Math.floor(Math.random() * 10)*1000;
+        const randomInterval = Math.floor(Math.random() * ((10-2)+2))*1000;
         setInterval(()=>{
             if(this.shooting === false){
                 this.shooting = true;
