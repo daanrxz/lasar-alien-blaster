@@ -2,7 +2,7 @@ const mainContainer = document.getElementById("main-container");
 
 //Game state
 let currentLevel = 1;
-let playerSpeed = 5;
+let playerSpeed = 3;
 window.onload = ()=>{
     mainMenu()
 }

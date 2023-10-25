@@ -43,11 +43,28 @@ class Game{
            if(playerRect.right >= powerRect.left && playerRect.left <= powerRect.left ||
                 powerRect.right >= playerRect.left && powerRect.left <= playerRect.left
             ){
+                const typeOfPower = document.querySelector(".powerup").classList[1].split("-")[0];
+                this.powerActivate(typeOfPower);
                 document.querySelector(".powerup").remove()
            }
         }
     }
-
+    powerActivate(powerType){
+        switch(powerType){
+            case "speed":
+                playerSpeed = 7;
+                setTimeout(()=>{
+                    playerSpeed = 3;
+                }, 5000);
+            break;
+            case "health":
+                this.player.health+=50;
+                if(this.player.health > 100){
+                    this.player.health = 100;
+                }
+                this.player.updateHealth()
+        }
+    }
     start(){
         this.gameLoop();
         this.ufoInterval()
