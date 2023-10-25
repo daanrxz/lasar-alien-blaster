@@ -1,5 +1,6 @@
 class Player{
-    constructor(screen, left, width, height, imgSrc){
+    constructor(screen, left, width, height, game){
+        this.game = game
         //player dimensions
         this.screen = screen;
         this.left = left;
@@ -88,6 +89,7 @@ class Player{
     gameOver(){
         this.element.remove()
         gameIsOver();
+        this.game.gameIsOver = true;
     }
 
 

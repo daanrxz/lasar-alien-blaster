@@ -1,5 +1,8 @@
 const mainContainer = document.getElementById("main-container");
+
+//Game state
 let currentLevel = 1;
+let playerSpeed = 5;
 window.onload = ()=>{
     mainMenu()
 }
@@ -70,9 +73,9 @@ function startGame(level) {
         // Handle player actions based on the most recent directional key pressed
         if (game) {
             if (keysPressed["ArrowLeft"] && lastDirectionalKeyPressed === "ArrowLeft") {
-                game.player.directionX = -3;
+                game.player.directionX = playerSpeed * -1;
             } else if (keysPressed["ArrowRight"] && lastDirectionalKeyPressed === "ArrowRight") {
-                game.player.directionX = 3;
+                game.player.directionX = playerSpeed;
             }
         }
         if (keysPressed["Space"]) {
@@ -92,10 +95,10 @@ function startGame(level) {
                     // If one arrow key is lifted, and the other is still pressed, move in that direction
                     if (e.code === "ArrowLeft" && keysPressed["ArrowRight"]) {
                         lastDirectionalKeyPressed = "ArrowRight";
-                        game.player.directionX = 3;
+                        game.player.directionX = playerSpeed;
                     } else if (e.code === "ArrowRight" && keysPressed["ArrowLeft"]) {
                         lastDirectionalKeyPressed = "ArrowLeft";
-                        game.player.directionX = -3;
+                        game.player.directionX = playerSpeed * -1;
                     }
                 }
             }

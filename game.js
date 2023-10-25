@@ -1,7 +1,7 @@
 class Game{
     constructor(level){
         this.screen = document.getElementById("main-container");
-        this.player = new Player(this.screen, 400, 140, 140)
+        this.player = new Player(this.screen, 400, 140, 140, this)
         this.height = 700;
         this.width = 800;
         this.lives = 5;
@@ -10,16 +10,48 @@ class Game{
         this.level = level;
         this.ufosLeft = this.level;
         this.ufos = [];
-
+        this.healthPowerup = createToDom("img", ["class", "powerup", "health-powerup"], false, "images/health-power.png")
+        this.speedPowerup = createToDom("img", ["class", "powerup", "speed-powerup"], false, "images/speed-power.png")
         //levels left
         const ufosLeftDiv = createToDom("div", ["id", "levels-left-div"], this.screen, false, false)
         const currentLevel = createToDom("h2", false, ufosLeftDiv, false, "Level "+ this.level)
         createToDom("p", false, ufosLeftDiv, false, "UFOs left:")
         this.ufosLeftElement = createToDom("div", false, ufosLeftDiv, false, this.ufosLeft)
     }
+    powerupTimeout(){
+        const randomInterval = Math.floor(Math.random() * ((30000-8000)-8000))
+        const powerUpArr = [this.healthPowerup, this.speedPowerup]
+        const powerUpInterval = setTimeout(()=>{
+            if(this.gameIsOver){
+                clearTimeout(powerUpInterval)
+                return;
+            }
+            else{
+                if(document.querySelector(".powerup")===null){
+                    const random = Math.floor(Math.random() * ((powerUpArr.length)));
+                    this.screen.appendChild(powerUpArr[random]);
+                    powerUpArr[random].style.left = Math.floor(Math.random() * ((750+50)-50)) + "px"
+                    this.powerupTimeout()
+                }
+            }
+        }, randomInterval)
+    }
+    powerupCollision(){
+        if(document.querySelector(".powerup")!==null){
+            const powerRect = document.querySelector(".powerup").getBoundingClientRect();
+            const playerRect = document.getElementById("main-character").getBoundingClientRect();
+           if(playerRect.right >= powerRect.left && playerRect.left <= powerRect.left ||
+                powerRect.right >= playerRect.left && powerRect.left <= playerRect.left
+            ){
+                document.querySelector(".powerup").remove()
+           }
+        }
+    }
+
     start(){
         this.gameLoop();
         this.ufoInterval()
+        this.powerupTimeout();
     }
     ufoCreation(){
         this.ufos.push(new Ufo(this.screen, this, "images/ufo-img.png" ));
@@ -48,6 +80,7 @@ class Game{
         }
     }
     youWin(){
+        this.gameIsOver = true;
         this.screen.innerHTML = "";
         const youWinDiv = createToDom("div", ["id", "you-win-div"], this.screen);
         const title = createToDom("div", ["id", "you-win-title"], youWinDiv, false, "YOU WIN!");
@@ -67,10 +100,10 @@ class Game{
             this.gameLoop()
             }
         ) 
+        this.powerupCollision()
     }
     update(){
         this.player.move()
-
         for(let i=0;i<this.ufos.length;i++){
             const ufo = this.ufos[i];
             ufo.movement()
