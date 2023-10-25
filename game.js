@@ -50,11 +50,20 @@ class Game{
         }
     }
     powerActivate(powerType){
+        
         switch(powerType){
             case "speed":
+                const player= document.getElementById("main-character");
+                const wheels = player.querySelectorAll(".wheel");
+                wheels.forEach(wheel=>{
+                    wheel.classList.add("speed-wheel")
+                })
                 playerSpeed = 7;
                 setTimeout(()=>{
                     playerSpeed = 3;
+                    wheels.forEach(wheel=>{
+                        wheel.classList.remove("speed-wheel")
+                    })
                 }, 5000);
             break;
             case "health":
@@ -89,7 +98,7 @@ class Game{
         }
 
     }
-    removeUfo(ufo){
+    removeUfo(){
         this.ufosLeft--;
         this.ufosLeftElement.innerText = this.ufosLeft;
         if(this.ufosLeft===0){
@@ -110,7 +119,6 @@ class Game{
         })
     }
     gameLoop(){
-
         if(this.gameIsOver){ return }
         this.update();
         window.requestAnimationFrame(()=>{

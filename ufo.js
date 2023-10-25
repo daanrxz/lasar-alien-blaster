@@ -100,12 +100,15 @@ class Ufo{
         const playerRect = player.getBoundingClientRect();
         const playerLeft = playerRect.left;
         const playerRight = playerRect.right
+        const playerObj = player.elementObj;
 
         if((laserLeft> playerLeft && laserLeft < playerRight)){
-            const playerObj = player.elementObj;
-            playerObj.health -=1;
+            playerObj.health -=0.5;
             playerObj.updateHealth();
+            player.classList.add("player-taking-damage");
+            setTimeout(()=>{player.classList.remove("player-taking-damage")}, 600)
         }
-   
+
+       
     }
 }
