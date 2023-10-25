@@ -1,6 +1,5 @@
 const mainContainer = document.getElementById("main-container");
 const gunSound = new Audio("sounds/gun-sound.mp3")
-const laserSound = new Audio("sounds/laser-sound.mp3")
 const song = new Audio("sounds/venice.mp3")
 //Game state
 let stateGame = false;
@@ -36,7 +35,7 @@ function soundOptions(){
         else{
             soundEffects=false;
             crossSound.style.display = "block"
-            laserSound.pause()
+
         }
     }
     function musicToggle(){
@@ -55,7 +54,6 @@ function soundOptions(){
 
         }
     }
-
 }
 
 
@@ -69,11 +67,15 @@ function mainMenu(){
     const logoTitle = createToDom("img", ["class", "logo-title"], logoContainer, "/images/logo-title.png")
     const btnsContainer = createToDom("div", ["id", "buttons-container"], startMenu)
     const startBtn = createToDom("div", ["class", "menu-btn"], startMenu, false, "Start Game")
+    const instructionsImg = createToDom("img", ["id", "instructions-img"], startMenu, "images/instructions.png") 
     startBtn.addEventListener("click", ()=>{
         startGame(currentLevel)
     })
 }
+
+
 function gameIsOver(){
+
     mainContainer.innerHTML = "";
     const gameOverDiv= createToDom("div", ["id", "game-over-div"], mainContainer);
     const title = createToDom("div", ["id", "game-over-title"], gameOverDiv, false, "Game Over");

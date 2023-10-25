@@ -91,7 +91,7 @@ class Player{
         gameIsOver();
         this.game.gameIsOver = true;
         stateGame = false;
-        laserSound.pause()
+
     }
 
 

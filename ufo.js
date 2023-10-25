@@ -72,7 +72,7 @@ class Ufo{
         }
     }
     ufoShoot(){
-        const randomInterval = Math.floor(Math.random() * ((10-2)+2))*1000;
+        const randomInterval = (Math.floor(Math.random() * ((12-3)+3)))*1000;
         setInterval(()=>{
             if(this.shooting === false){
                 this.shooting = true;
@@ -81,16 +81,6 @@ class Ufo{
         }, randomInterval)
     }
     shootLaser(){
-        if(stateGame){
-            laserSound.play()
-        }
-        else{
-            laserSound.pause()
-        }
-        if(!soundEffects){
-            laserSound.pause()
-
-        }
         const laser = document.createElement("div");
         this.laser = laser;
         this.ufoLaserGun.appendChild(laser);
@@ -101,7 +91,6 @@ class Ufo{
         }, 1000)
     }
     laserCollision(){
-
         const player = document.getElementById("main-character");
         if(player === null){
             return

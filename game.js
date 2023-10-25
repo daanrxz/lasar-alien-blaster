@@ -107,7 +107,6 @@ class Game{
     }
     youWin(){
         this.gameIsOver = true;
-        laserSound.pause()
         stateGame = false;
         this.screen.innerHTML = "";
         const youWinDiv = createToDom("div", ["id", "you-win-div"], this.screen);
