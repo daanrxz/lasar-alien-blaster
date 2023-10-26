@@ -62,12 +62,12 @@ function mainMenu(){
     soundOptions()
     const startMenu = createToDom("div", ["id", "start-menu"], mainContainer);
     const logoContainer = createToDom("div", ["id", "logo-container"], startMenu);
-    const alienTitle = createToDom("img", ["class", "alien-title"], logoContainer, "/images/alien-title.png")
-    const blasterTitle = createToDom("img", ["class", "blaster-title"], logoContainer, "/images/blaster-title.png")
-    const logoTitle = createToDom("img", ["class", "logo-title"], logoContainer, "/images/logo-title.png")
+    const alienTitle = createToDom("img", ["class", "alien-title"], logoContainer, "docs/images/alien-title.png")
+    const blasterTitle = createToDom("img", ["class", "blaster-title"], logoContainer, "docs/images/blaster-title.png")
+    const logoTitle = createToDom("img", ["class", "logo-title"], logoContainer, "docs/images/logo-title.png")
     const btnsContainer = createToDom("div", ["id", "buttons-container"], startMenu)
     const startBtn = createToDom("div", ["class", "menu-btn"], startMenu, false, "Start Game")
-    const instructionsImg = createToDom("img", ["id", "instructions-img"], startMenu, "images/instructions.png") 
+    const instructionsImg = createToDom("img", ["id", "instructions-img"], startMenu, "docs/images/instructions.png") 
     startBtn.addEventListener("click", ()=>{
         startGame(currentLevel)
     })
