@@ -1,6 +1,6 @@
 const mainContainer = document.getElementById("main-container");
-const gunSound = new Audio("sounds/gun-sound.mp3")
-const song = new Audio("sounds/venice.mp3")
+const gunSound = new Audio("docs/sounds/gun-sound.mp3")
+const song = new Audio("docs/sounds/venice.mp3")
 //Game state
 let stateGame = false;
 let currentLevel = 1;
@@ -17,11 +17,11 @@ window.onload = ()=>{
 function soundOptions(){
     const container = createToDom("div", ["id", "sound-container"], mainContainer)
     const soundContainer = createToDom("div", ["class", "icon-container"], container)
-    const soundIcon = createToDom("img", ["class", "icon", "sound-icon"], soundContainer, "images/sound-icon.png" )
+    const soundIcon = createToDom("img", ["class", "icon", "sound-icon"], soundContainer, "docs/images/sound-icon.png" )
     const crossSound = createToDom("div", ["class", "disabled-sound"], soundContainer, false, "X")
     crossSound.style.display= soundEffects ? "none" : "block"
     const musicContainer = createToDom("div", ["class", "icon-container"], container)
-    const musicIcon = createToDom("img", ["class", "icon", "music-icon"], musicContainer,"images/music-icon.png" )
+    const musicIcon = createToDom("img", ["class", "icon", "music-icon"], musicContainer,"docs/images/music-icon.png" )
     const crossMusic = createToDom("div", ["class", "disabled-sound"], musicContainer, false, "X")
     crossMusic.style.display= music ? "none" : "block"
     

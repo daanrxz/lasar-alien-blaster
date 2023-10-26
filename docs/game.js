@@ -10,8 +10,8 @@ class Game{
         this.level = level;
         this.ufosLeft = this.level;
         this.ufos = [];
-        this.healthPowerup = createToDom("img", ["class", "powerup", "health-powerup"], false, "images/health-power.png")
-        this.speedPowerup = createToDom("img", ["class", "powerup", "speed-powerup"], false, "images/speed-power.png")
+        this.healthPowerup = createToDom("img", ["class", "powerup", "health-powerup"], false, "docs/images/health-power.png")
+        this.speedPowerup = createToDom("img", ["class", "powerup", "speed-powerup"], false, "docs/images/speed-power.png")
         //levels left
         const ufosLeftDiv = createToDom("div", ["id", "levels-left-div"], this.screen, false, false)
         const currentLevel = createToDom("h2", false, ufosLeftDiv, false, "Level "+ this.level)
@@ -80,7 +80,7 @@ class Game{
         this.powerupTimeout();
     }
     ufoCreation(){
-        this.ufos.push(new Ufo(this.screen, this, "images/ufo-img.png" ));
+        this.ufos.push(new Ufo(this.screen, this, "docs/images/ufo-img.png" ));
     }
     ufoInterval(){
         //this will be the logic to add more ufos depending on level 
